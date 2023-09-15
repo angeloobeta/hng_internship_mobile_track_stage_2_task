@@ -31,7 +31,7 @@ class CvPage extends StatelessWidget {
             title: const GeneralTextDisplay(
                 'CV Preview', grey, 1, 25, FontWeight.normal, 'full_name'),
           ),
-          body: Container(
+          body: SizedBox(
             height: MediaQuery.sizeOf(context).height,
             width: MediaQuery.sizeOf(context).width,
             child: ListView(
@@ -82,7 +82,9 @@ class CvPage extends StatelessWidget {
                                 )),
                       );
                     },
-                    child: const Text('Edit CV'),
+                    child: SizedBox(
+                        height: sS(context).cH(height: 60),
+                        child: const Center(child: Text('Edit CV'))),
                   ),
                 ),
               ],

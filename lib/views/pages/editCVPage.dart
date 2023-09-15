@@ -1,13 +1,15 @@
+import 'package:hng_internship_mobile_track_stage_2_task/views/uiElements/textField.dart';
+
 import '../../model/utilities/imports/generalImport.dart';
 import 'curriculumVitaPage.dart';
 
 class EditCVPage extends StatefulWidget {
-  late final String fullName;
-  late final String slackUsername;
-  late final String githubHandle;
-  late final String bio;
+  final String fullName;
+  final String slackUsername;
+  final String githubHandle;
+  final String bio;
 
-  EditCVPage({
+  const EditCVPage({
     super.key,
     required this.fullName,
     required this.slackUsername,
@@ -55,29 +57,41 @@ class _EditCVPageState extends State<EditCVPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              maxLines: null,
-              controller: fullNameController,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                  labelText: 'Full Name'),
-            ),
-            const S(h: 15),
-            TextField(
-              controller: slackUsernameController,
-              decoration: const InputDecoration(labelText: 'Slack Username'),
-            ),
-            const S(h: 15),
-            TextField(
-              controller: githubHandleController,
-              decoration: const InputDecoration(labelText: 'GitHub Handle'),
-            ),
-            const S(h: 15),
-            TextField(
-              controller: bioController,
-              decoration: const InputDecoration(labelText: 'Bio'),
-            ),
+            const GeneralTextDisplay(
+                "Full Name", grey, 1, 20, FontWeight.bold, 'full name'),
+            const S(h: 10),
+            textForm(
+                context: context,
+                maxLine: false,
+                labelText: "Full Name",
+                controller: fullNameController),
+            const S(h: 25),
+            const GeneralTextDisplay(
+                "Slack Username", grey, 1, 20, FontWeight.bold, 'full name'),
+            const S(h: 10),
+            textForm(
+                context: context,
+                maxLine: false,
+                labelText: "Slack Username",
+                controller: slackUsernameController),
+            const S(h: 25),
+            const GeneralTextDisplay(
+                "GitHub Handle", grey, 1, 20, FontWeight.bold, 'full name'),
+            const S(h: 10),
+            textForm(
+                context: context,
+                maxLine: false,
+                labelText: "GitHub Handle",
+                controller: githubHandleController),
+            const S(h: 25),
+            const GeneralTextDisplay(
+                "Short Biography", grey, 1, 20, FontWeight.bold, 'full name'),
+            const S(h: 10),
+            textForm(
+                context: context,
+                maxLine: true,
+                labelText: "Short Biography",
+                controller: bioController),
             const S(h: 50),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -93,7 +107,9 @@ class _EditCVPageState extends State<EditCVPage> {
                             githubHandle: githubHandleController.text,
                             bio: bioController.text)));
               },
-              child: const Text('Save Changes'),
+              child: SizedBox(
+                  height: sS(context).cH(height: 60),
+                  child: const Center(child: Text('Save Changes'))),
             ),
           ],
         ),
