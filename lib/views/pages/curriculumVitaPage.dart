@@ -34,60 +34,62 @@ class CvPage extends StatelessWidget {
           body: SizedBox(
             height: MediaQuery.sizeOf(context).height,
             width: MediaQuery.sizeOf(context).width,
-            child: ListView(
-              padding: const EdgeInsets.all(16.0),
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.info_outline, color: green),
-                  title: const GeneralTextDisplay('Full Name', black, 1, 20,
-                      FontWeight.normal, 'full_name'),
-                  subtitle: Text(fullName ?? detail[0]),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.info_outline, color: pink),
-                  title: const GeneralTextDisplay('Slack Username', black, 1,
-                      20, FontWeight.normal, 'full_name'),
-                  subtitle: Text(slackUsername ?? detail[1]),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.info_outline, color: blue),
-                  title: const GeneralTextDisplay('GitHub Handle', black, 1, 20,
-                      FontWeight.normal, 'full_name'),
-                  subtitle: Text(githubHandle ?? detail[2]),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.info_outline, color: brown),
-                  title: const Row(
-                    children: [
-                      Text('Bio'),
-                    ],
+            child: Container(
+              child: ListView(
+                padding: const EdgeInsets.all(16.0),
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.face, color: green),
+                    title: const GeneralTextDisplay('Full Name', black, 1, 20,
+                        FontWeight.normal, 'full_name'),
+                    subtitle: Text(fullName ?? detail[0]),
                   ),
-                  subtitle: Text(bio ?? detail[3]),
-                ),
-                const S(h: 40),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        foregroundColor: white, backgroundColor: purple),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EditCVPage(
-                                  fullName: detail[0],
-                                  slackUsername: detail[1],
-                                  githubHandle: detail[2],
-                                  bio: detail[3],
-                                )),
-                      );
-                    },
-                    child: SizedBox(
-                        height: sS(context).cH(height: 60),
-                        child: const Center(child: Text('Edit CV'))),
+                  ListTile(
+                    leading: const Icon(Icons.info_outline, color: pink),
+                    title: const GeneralTextDisplay('Slack Username', black, 1,
+                        20, FontWeight.normal, 'full_name'),
+                    subtitle: Text(slackUsername ?? detail[1]),
                   ),
-                ),
-              ],
+                  ListTile(
+                    leading: const Icon(Icons.code_off_outlined, color: blue),
+                    title: const GeneralTextDisplay('GitHub Handle', black, 1,
+                        20, FontWeight.normal, 'full_name'),
+                    subtitle: Text(githubHandle ?? detail[2]),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.copy, color: brown),
+                    title: const Row(
+                      children: [
+                        Text('Bio'),
+                      ],
+                    ),
+                    subtitle: Text(bio ?? detail[3]),
+                  ),
+                  const S(h: 40),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          foregroundColor: white, backgroundColor: purple),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditCVPage(
+                                    fullName: detail[0],
+                                    slackUsername: detail[1],
+                                    githubHandle: detail[2],
+                                    bio: detail[3],
+                                  )),
+                        );
+                      },
+                      child: SizedBox(
+                          height: sS(context).cH(height: 60),
+                          child: const Center(child: Text('Edit CV'))),
+                    ),
+                  ),
+                ],
+              ),
             ),
           )),
     );
